@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+
+$:.unshift(File.dirname(__FILE__) + "/../lib/")
+
+require 'gem_lint'
+
+filename = ARGV.shift
+runner = GemLint::Runner.new(filename)
+puts runner.tags.inspect
