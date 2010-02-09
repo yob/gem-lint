@@ -7,4 +7,17 @@ require 'gem_lint'
 
 filename = ARGV.shift
 runner = GemLint::Runner.new(filename)
-puts runner.tags.inspect
+tags = runner.tags
+
+if tags.empty?
+  puts "No test failures!"
+  puts
+  exit 0
+else
+  puts "#{tags.size} failures"
+  tags.each do |tag|
+    puts "- #{tag}"
+  end
+  puts
+  exit 1
+end
