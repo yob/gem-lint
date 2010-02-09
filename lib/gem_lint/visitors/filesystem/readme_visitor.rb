@@ -29,7 +29,6 @@ module GemLint
         private
 
         def root_files
-          #Dir.glob(@path + "/**/*")
           Dir.entries(@path)
         end
 
