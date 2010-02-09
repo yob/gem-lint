@@ -9,20 +9,34 @@ module GemLint
       @filename = filename
     end
 
-    # returns an array of symbols, each one indicating a test the provided gem failed
+    # returns a cached array of symbols, each one indicating a test the provided gem failed
+    #
     def tags
       @tags ||= collect_tags
     end
 
     private
 
+    # returns an array of symbols, each one indicating a test the provided gem
+    # failed. Unpacks the gem to a temporary location and cleans up after
+    # itself.
+    #
     def collect_tags
       unpack_gem
-
-      tags = Dir.glob(unpack_path + "/**/*")
-
+      tags = filesystem_tags
       cleanup
       tags
+    end
+
+    # runs all filesystem visitors over the unpacked gem, returning an
+    # array of tags indicating failures.
+    #
+    def filesystem_tags
+      GemLint.filesystem_visitors.select { |v|
+        v.new(data_path).fail?
+      }.map { |v|
+        v.tag
+      }
     end
 
     def data_path
