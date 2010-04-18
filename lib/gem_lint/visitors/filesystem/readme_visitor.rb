@@ -16,10 +16,9 @@ module GemLint
         end
 
         def pass?
-          root_files.each do |filename|
-            return true if filename.downcase.include?("readme")
+          root_files.any? do |filename|
+            filename.downcase.include?("readme")
           end
-          false
         end
 
         def fail?

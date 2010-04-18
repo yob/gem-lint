@@ -16,13 +16,10 @@ module GemLint
         end
 
         def pass?
-          root_files.each do |filename|
+          root_files.any? do |filename|
             dfile = filename.downcase
-            if dfile.include?("changelog") || dfile.include?("history")
-              return true 
-            end
+            dfile.include?("changelog") || dfile.include?("history")
           end
-          false
         end
 
         def fail?
