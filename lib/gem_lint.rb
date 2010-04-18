@@ -8,12 +8,14 @@ require 'fileutils'
 require 'gem_lint/runner'
 require 'gem_lint/visitors/filesystem/changelog_visitor'
 require 'gem_lint/visitors/filesystem/readme_visitor'
+require 'gem_lint/visitors/filesystem/ruby_file_location_visitor'
 
 module GemLint
   def self.filesystem_visitors
     [
+      GemLint::Visitors::Filesystem::ChangelogVisitor,
       GemLint::Visitors::Filesystem::ReadmeVisitor,
-      GemLint::Visitors::Filesystem::ChangelogVisitor
+      GemLint::Visitors::Filesystem::RubyFileLocationVisitor
     ]
   end
 end
