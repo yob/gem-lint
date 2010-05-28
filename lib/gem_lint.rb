@@ -6,16 +6,16 @@ require 'fileutils'
 
 # our own code
 require 'gem_lint/runner'
-require 'gem_lint/visitors/filesystem/changelog_visitor'
-require 'gem_lint/visitors/filesystem/readme_visitor'
-require 'gem_lint/visitors/filesystem/ruby_file_location_visitor'
+require 'gem_lint/visitors/changelog_visitor'
+require 'gem_lint/visitors/readme_visitor'
+require 'gem_lint/visitors/ruby_file_location_visitor'
 
 module GemLint
-  def self.filesystem_visitors
+  def self.visitors
     [
-      GemLint::Visitors::Filesystem::ChangelogVisitor,
-      GemLint::Visitors::Filesystem::ReadmeVisitor,
-      GemLint::Visitors::Filesystem::RubyFileLocationVisitor
+      GemLint::Visitors::ChangelogVisitor,
+      GemLint::Visitors::ReadmeVisitor,
+      GemLint::Visitors::RubyFileLocationVisitor
     ]
   end
 end

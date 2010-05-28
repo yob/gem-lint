@@ -23,20 +23,13 @@ module GemLint
     #
     def collect_tags
       unpack_gem
-      tags = filesystem_tags
-      cleanup
-      tags
-    end
-
-    # runs all filesystem visitors over the unpacked gem, returning an
-    # array of tags indicating failures.
-    #
-    def filesystem_tags
-      GemLint.filesystem_visitors.select { |v|
+      tags = GemLint.visitors.select { |v|
         v.new(data_path).fail?
       }.map { |v|
         v.tag
       }
+      cleanup
+      tags
     end
 
     def data_path
