@@ -7,6 +7,7 @@ require 'fileutils'
 # our own code
 require 'gem_lint/runner'
 require 'gem_lint/visitors/abstract_visitor'
+require 'gem_lint/visitors/bin_ends_with_rb_visitor'
 require 'gem_lint/visitors/bin_without_shebang_visitor'
 require 'gem_lint/visitors/changelog_visitor'
 require 'gem_lint/visitors/readme_visitor'
@@ -16,6 +17,7 @@ require 'gem_lint/visitors/ruby_file_location_visitor'
 module GemLint
   def self.visitors
     [
+      GemLint::Visitors::BinEndsWithRbVisitor,
       GemLint::Visitors::BinWithoutShebangVisitor,
       GemLint::Visitors::ChangelogVisitor,
       GemLint::Visitors::ReadmeVisitor,
