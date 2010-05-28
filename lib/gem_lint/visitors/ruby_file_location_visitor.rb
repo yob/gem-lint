@@ -13,7 +13,7 @@ module GemLint
       end
 
       def pass?
-        !pass?
+        !self.fail?
       end
 
       def fail?
