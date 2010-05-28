@@ -24,12 +24,19 @@ module GemLint
     def collect_tags
       unpack_gem
       tags = GemLint.visitors.select { |v|
-        v.new(data_path).fail?
+        v.new(visitor_args).fail?
       }.map { |v|
         v.tag
       }
       cleanup
       tags
+    end
+
+    def visitor_args
+      @visitor_args ||= {
+        :path     => data_path,
+        :filename => @filename
+      }
     end
 
     def data_path

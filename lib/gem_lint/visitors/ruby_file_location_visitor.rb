@@ -2,11 +2,7 @@ require 'find'
 
 module GemLint
   module Visitors
-    class RubyFileLocationVisitor
-
-      def initialize(path)
-        @path = path
-      end
+    class RubyFileLocationVisitor < AbstractVisitor
 
       def self.description
         "Gem contains ruby files outside of lib, test and spec"
@@ -31,9 +27,9 @@ module GemLint
 
       def all_files
         paths = []
-        Find.find(@path) { |path| paths << path }
+        Find.find(self.path) { |path| paths << path }
         paths.map { |path|
-          path.gsub(@path + "/","")
+          path.gsub(self.path + "/","")
         }
       end
 

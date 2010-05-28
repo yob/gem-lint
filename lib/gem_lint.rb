@@ -6,6 +6,7 @@ require 'fileutils'
 
 # our own code
 require 'gem_lint/runner'
+require 'gem_lint/visitors/abstract_visitor'
 require 'gem_lint/visitors/changelog_visitor'
 require 'gem_lint/visitors/readme_visitor'
 require 'gem_lint/visitors/ruby_file_location_visitor'

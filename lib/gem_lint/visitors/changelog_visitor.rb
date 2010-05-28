@@ -1,10 +1,6 @@
 module GemLint
   module Visitors
-    class ChangelogVisitor
-
-      def initialize(path)
-        @path = path
-      end
+    class ChangelogVisitor < AbstractVisitor
 
       def self.description
         "Gem contains no changelog or history file"
@@ -28,7 +24,7 @@ module GemLint
       private
 
       def root_files
-        Dir.entries(@path)
+        Dir.entries(self.path)
       end
 
     end

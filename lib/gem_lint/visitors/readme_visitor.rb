@@ -1,10 +1,6 @@
 module GemLint
   module Visitors
-    class ReadmeVisitor
-
-      def initialize(path)
-        @path = path
-      end
+    class ReadmeVisitor < AbstractVisitor
 
       def self.description
         "Gem contains no readme file"
@@ -27,7 +23,7 @@ module GemLint
       private
 
       def root_files
-        Dir.entries(@path)
+        Dir.entries(self.path)
       end
 
     end
