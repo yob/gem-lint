@@ -10,6 +10,7 @@ require 'gem_lint/strategies/abstract_strategy'
 require 'gem_lint/strategies/bin_ends_with_rb_strategy'
 require 'gem_lint/strategies/bin_without_shebang_strategy'
 require 'gem_lint/strategies/changelog_strategy'
+require 'gem_lint/strategies/no_pkg_dir_strategy'
 require 'gem_lint/strategies/readme_strategy'
 require 'gem_lint/strategies/require_matches_gemname_strategy'
 require 'gem_lint/strategies/ruby_file_location_strategy'
@@ -22,6 +23,7 @@ module GemLint
       GemLint::Strategies::BinEndsWithRbStrategy,
       GemLint::Strategies::BinWithoutShebangStrategy,
       GemLint::Strategies::ChangelogStrategy,
+      GemLint::Strategies::NoPkgDirStrategy,
       GemLint::Strategies::ReadmeStrategy,
       GemLint::Strategies::RequireMatchesGemnameStrategy,
       GemLint::Strategies::RubyFileLocationStrategy,
