@@ -34,8 +34,9 @@ module GemLint
 
     def visitor_args
       @visitor_args ||= {
-        :path     => data_path,
-        :filename => @filename
+        :filename      => @filename,
+        :data_path     => data_path,
+        :metadata_path => metadata_file
       }
     end
 
@@ -47,8 +48,12 @@ module GemLint
       @data_file ||= File.join(unpack_path, "data.tar.gz")
     end
 
+    def metadata_gz_file
+      @metadata_gz_file ||= File.join(unpack_path, "metadata.gz")
+    end
+
     def metadata_file
-      @metadata_file ||= File.join(unpack_path, "metadata.gz")
+      @metadata_file ||= File.join(unpack_path, "metadata")
     end
 
     def unpack_path
