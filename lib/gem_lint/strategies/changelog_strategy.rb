@@ -1,6 +1,6 @@
 module GemLint
-  module Visitors
-    class ChangelogVisitor < AbstractVisitor
+  module Strategies
+    class ChangelogStrategy < AbstractStrategy
 
       def self.description
         "Gem contains no changelog or history file"

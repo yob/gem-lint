@@ -23,7 +23,7 @@ module GemLint
     #
     def collect_tags
       unpack_gem
-      tags = GemLint.visitors.select { |v|
+      tags = GemLint.strategies.select { |v|
         v.new(visitor_args).fail?
       }.map { |v|
         v.tag

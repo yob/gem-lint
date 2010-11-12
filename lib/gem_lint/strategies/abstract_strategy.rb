@@ -1,8 +1,8 @@
 # coding: utf-8
 
 module GemLint
-  module Visitors
-    class AbstractVisitor
+  module Strategies
+    class AbstractStrategy
       attr_reader :filename, :path, :metadata_path
 
       def initialize(args = {})

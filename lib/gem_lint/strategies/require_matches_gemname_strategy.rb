@@ -1,8 +1,8 @@
 require 'find'
 
 module GemLint
-  module Visitors
-    class RequireMatchesGemnameVisitor < AbstractVisitor
+  module Strategies
+    class RequireMatchesGemnameStrategy < AbstractStrategy
 
       def self.description
         "Gem cannot be loaded by require 'gemname'"

@@ -1,6 +1,6 @@
 module GemLint
-  module Visitors
-    class ReadmeVisitor < AbstractVisitor
+  module Strategies
+    class ReadmeStrategy < AbstractStrategy
 
       def self.description
         "Gem contains no readme file"

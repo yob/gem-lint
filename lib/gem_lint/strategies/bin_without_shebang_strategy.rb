@@ -1,13 +1,13 @@
 module GemLint
-  module Visitors
-    class BinEndsWithRbVisitor < AbstractVisitor
+  module Strategies
+    class BinWithoutShebangStrategy < AbstractStrategy
 
       def self.description
-        "A file in bin/ ends in .rb"
+        "A file in bin/ doesn't have a shebang on the first line"
       end
 
       def self.tag
-        :"bin-ends-with-rb"
+        :"bin-without-shebang"
       end
 
       def pass?
@@ -15,7 +15,12 @@ module GemLint
       end
 
       def fail?
-        bin_files.any? { |path| path[-3,3] == ".rb" }
+        bin_files.any? { |path|
+          puts path
+          data = File.open(self.path + "/" + path) { |f| f.read }
+          first_line = data.split("\n")[0]
+          !first_line.to_s.include?("env ruby")
+        }
       end
 
       private

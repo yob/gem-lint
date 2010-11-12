@@ -6,25 +6,25 @@ require 'fileutils'
 
 # our own code
 require 'gem_lint/runner'
-require 'gem_lint/visitors/abstract_visitor'
-require 'gem_lint/visitors/bin_ends_with_rb_visitor'
-require 'gem_lint/visitors/bin_without_shebang_visitor'
-require 'gem_lint/visitors/changelog_visitor'
-require 'gem_lint/visitors/readme_visitor'
-require 'gem_lint/visitors/require_matches_gemname_visitor'
-require 'gem_lint/visitors/ruby_file_location_visitor'
-require 'gem_lint/visitors/utf8_metadata_visitor'
+require 'gem_lint/strategies/abstract_strategy'
+require 'gem_lint/strategies/bin_ends_with_rb_strategy'
+require 'gem_lint/strategies/bin_without_shebang_strategy'
+require 'gem_lint/strategies/changelog_strategy'
+require 'gem_lint/strategies/readme_strategy'
+require 'gem_lint/strategies/require_matches_gemname_strategy'
+require 'gem_lint/strategies/ruby_file_location_strategy'
+require 'gem_lint/strategies/utf8_metadata_strategy'
 
 module GemLint
-  def self.visitors
+  def self.strategies
     [
-      GemLint::Visitors::BinEndsWithRbVisitor,
-      GemLint::Visitors::BinWithoutShebangVisitor,
-      GemLint::Visitors::ChangelogVisitor,
-      GemLint::Visitors::ReadmeVisitor,
-      GemLint::Visitors::RequireMatchesGemnameVisitor,
-      GemLint::Visitors::RubyFileLocationVisitor,
-      GemLint::Visitors::Utf8MetadataVisitor
+      GemLint::Strategies::BinEndsWithRbStrategy,
+      GemLint::Strategies::BinWithoutShebangStrategy,
+      GemLint::Strategies::ChangelogStrategy,
+      GemLint::Strategies::ReadmeStrategy,
+      GemLint::Strategies::RequireMatchesGemnameStrategy,
+      GemLint::Strategies::RubyFileLocationStrategy,
+      GemLint::Strategies::Utf8MetadataStrategy
     ]
   end
 end

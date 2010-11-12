@@ -1,8 +1,8 @@
 require 'find'
 
 module GemLint
-  module Visitors
-    class RubyFileLocationVisitor < AbstractVisitor
+  module Strategies
+    class RubyFileLocationStrategy < AbstractStrategy
 
       def self.description
         "Gem contains ruby files outside of lib, test and spec"

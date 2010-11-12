@@ -1,6 +1,6 @@
 module GemLint
-  module Visitors
-    class Utf8MetadataVisitor < AbstractVisitor
+  module Strategies
+    class Utf8MetadataStrategy < AbstractStrategy
 
       def self.description
         "Ensure the gem metadata is all utf8 encoded"
