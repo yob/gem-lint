@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 # coding: utf-8
 
+# During development of gem-lint, use this script to check gem files
+# for errors. This script isn't included in the compiled gem-lint gem.
+# In production, gems should be checked using "gem lint blah-0.0.1.gem"
+
 $:.unshift(File.dirname(__FILE__) + "/../lib/")
 
 require 'gem_lint'
