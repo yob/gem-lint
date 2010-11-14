@@ -1,0 +1,24 @@
+= GemLint
+
+Sanity check your rubygems for common issues. Missing readmes, bundled pkg
+directories, encoding issues in the gemspec, etc.
+
+== Usage
+
+  gem install gem-lint
+  gem lint somefile-0.0.1.gem
+
+== Status
+
+This a spike. It has no tests and is a proof of concept. Most of it was written at
+a Railscamp and therefore is probably of suspect quality.
+
+== Compatability
+
+Rubygems 1.3.2 or greater is required, otherwise it should run everywhere.
+
+== Developing
+
+To add new checks, create a new strategy in lib/gem_lint/strategies, and register
+it in lib/gem_lint.rb. Check other strategies for an idea of the required
+contract.

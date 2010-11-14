@@ -8,6 +8,6 @@ Gem::Specification.new do |s|
   s.homepage          = "http://github.com/yob/gem-lint"
   s.has_rdoc          = true
   s.rdoc_options      << "--title" << "Gem Lint" << "--line-numbers"
-  s.files             = Dir.glob("lib/**/*")
+  s.files             = Dir.glob("lib/**/*") + ["README.rdoc"]
   s.required_rubygems_version = ">=1.3.2"
 end
