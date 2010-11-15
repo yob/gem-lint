@@ -23,11 +23,15 @@ module GemLint
     #
     def collect_tags
       unpack_gem
-      tags = GemLint.strategies.select { |v|
-        v.new(visitor_args).fail?
-      }.map { |v|
-        v.tag
-      }
+      if unpack_successful?
+        tags = GemLint.strategies.select { |v|
+          v.new(visitor_args).fail?
+        }.map { |v|
+          v.tag
+        }
+      else
+        tags = ["unpack-failed"]
+      end
       cleanup
       tags
     end
@@ -38,6 +42,10 @@ module GemLint
         :data_path     => data_path,
         :metadata_path => metadata_file
       }
+    end
+
+    def unpack_successful?
+      File.directory?(data_path) && File.file?(metadata_file)
     end
 
     def data_path
@@ -69,7 +77,7 @@ module GemLint
       `tar -xzkC #{data_path} -f #{data_file} > /dev/null 2>&1`
       `gunzip #{metadata_file} > /dev/null 2>&1`
 
-      FileUtils.remove_entry_secure(data_file)
+      FileUtils.remove_entry_secure(data_file) if File.file?(data_file)
 
       true
     end
