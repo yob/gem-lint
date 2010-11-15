@@ -3,37 +3,40 @@
 module GemLint
   class Runner
 
+    attr_reader :tags, :email, :name, :version
+
     def initialize(filename)
       raise ArgumentError, "'#{filename}' does not exist" unless File.file?(filename.to_s)
 
       @filename = filename
-    end
-
-    # returns a cached array of symbols, each one indicating a test the provided gem failed
-    #
-    def tags
-      @tags ||= collect_tags
+      init_vars
     end
 
     private
+
+    def init_vars
+      unpack_gem
+      @tags    = collect_tags
+      @email   = spec ? spec.email : nil
+      @name    = spec ? spec.name : nil
+      @version = spec ? spec.version.to_s : nil
+      cleanup
+    end
 
     # returns an array of symbols, each one indicating a test the provided gem
     # failed. Unpacks the gem to a temporary location and cleans up after
     # itself.
     #
     def collect_tags
-      unpack_gem
       if unpack_successful?
-        tags = GemLint.strategies.select { |v|
+        GemLint.strategies.select { |v|
           v.new(visitor_args).fail?
         }.map { |v|
           v.tag
         }
       else
-        tags = ["unpack-failed"]
+        ["unpack-failed"]
       end
-      cleanup
-      tags
     end
 
     def visitor_args
@@ -62,6 +65,14 @@ module GemLint
 
     def metadata_file
       @metadata_file ||= File.join(unpack_path, "metadata")
+    end
+
+    def spec
+      if @spec || File.file?(metadata_file)
+        @spec ||= YAML.load_file(metadata_file)
+      else
+        nil
+      end
     end
 
     def unpack_path
