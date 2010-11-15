@@ -21,3 +21,8 @@ Rubygems 1.3.2 or greater is required, otherwise it should run everywhere.
 
 To add new checks, create a new strategy in lib/gem_lint/strategies. Check
 other strategies for an idea of the required contract.
+
+== Ideas
+
+* classify each check as warning/error
+* command for users to display extra info on a tag a gem failed
