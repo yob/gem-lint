@@ -16,7 +16,6 @@ module GemLint
 
       def fail?
         bin_files.any? { |path|
-          puts path
           data = File.open(self.path + "/" + path) { |f| f.read }
           first_line = data.split("\n")[0]
           !first_line.to_s.include?("env ruby")
