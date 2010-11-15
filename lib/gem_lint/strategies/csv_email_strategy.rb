@@ -1,21 +1,21 @@
 module GemLint
   module Strategies
-    class ValidEmailStrategy < AbstractStrategy
+    class CsvEmailStrategy < AbstractStrategy
 
       def self.description
-        "Ensure gem metadata has valid email details"
+        "Email field in spec uses CSV to specify multiple emails instead of an array"
       end
 
       def self.tag
-        :"valid-email"
+        :"csv-email"
       end
 
       def pass?
-        yaml.email.is_a?(String) || yaml.email.is_a?(Array)
+        !fail?
       end
 
       def fail?
-        !self.pass?
+        yaml.email.is_a?(String) && yaml.email.match(/.+,.+/)
       end
 
       private
