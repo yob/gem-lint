@@ -13,7 +13,7 @@ module GemLint
       end
 
       def pass?
-        all_files.include?("lib/#{gemname}.rb")
+        spec.files.include?(preferred_filename)
       end
 
       def fail?
@@ -22,17 +22,12 @@ module GemLint
 
       private
 
-      def gemname
-        m, name = *self.filename.match(/([a-zA-Z0-9\-]+?)-[0-9\.]+.gem/)
-        name
+      def preferred_filename
+        "lib/" + spec.name.tr("-","/") + ".rb"
       end
 
-      def all_files
-        paths = []
-        Find.find(self.path) { |path| paths << path }
-        paths.map { |path|
-          path.gsub(self.path + "/","")
-        }
+      def spec
+        @spec ||= YAML.load(File.read(@metadata_path))
       end
 
     end
