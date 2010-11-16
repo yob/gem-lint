@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class BinEndsWithRbStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "A file in bin/ ends in .rb"
       end
 
-      def self.tag
+      def tag
         :"bin-ends-with-rb"
-      end
-
-      def pass?
-        !self.fail?
       end
 
       def fail?
@@ -21,7 +17,7 @@ module GemLint
       private
 
       def bin_files
-        all_files.select { |path| 
+        all_files.select { |path|
           path[0,4] == "bin/" && File.file?(self.path + "/" + path)
         }
       end

@@ -4,16 +4,12 @@ module GemLint
   module Strategies
     class TestFilesInFilesAttributeStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Gem metadata includes test files in files attribute. Use test_files instead"
       end
 
-      def self.tag
+      def tag
         :"test-files-in-files-attribute"
-      end
-
-      def pass?
-        !self.fail?
       end
 
       def fail?

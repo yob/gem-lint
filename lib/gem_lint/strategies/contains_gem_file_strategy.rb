@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class ContainsGemFileStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Gem contains at least 1 other gem file"
       end
 
-      def self.tag
+      def tag
         :"contains-gem-file"
-      end
-
-      def pass?
-        !self.fail?
       end
 
       def fail?

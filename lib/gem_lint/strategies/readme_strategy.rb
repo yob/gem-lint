@@ -2,22 +2,18 @@ module GemLint
   module Strategies
     class ReadmeStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Gem contains no readme file"
       end
 
-      def self.tag
+      def tag
         :"no-readme"
       end
 
-      def pass?
-        root_files.any? do |filename|
+      def fail?
+        root_files.none? do |filename|
           filename.downcase.include?("readme")
         end
-      end
-
-      def fail?
-        !pass?
       end
 
       private

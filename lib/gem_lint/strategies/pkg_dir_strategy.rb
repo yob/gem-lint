@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class PkgDirStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Gem contains a directory in the root called pkg"
       end
 
-      def self.tag
+      def tag
         :"pkg-dir"
-      end
-
-      def pass?
-        !self.fail?
       end
 
       def fail?

@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class DuplicateAuthorsStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Authors field in spec should have no duplicate values"
       end
 
-      def self.tag
+      def tag
         :"duplicate-authors"
-      end
-
-      def pass?
-        !fail?
       end
 
       def fail?

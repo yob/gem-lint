@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class CsvEmailStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Email field in spec uses CSV to specify multiple emails instead of an array"
       end
 
-      def self.tag
+      def tag
         :"csv-email"
-      end
-
-      def pass?
-        !fail?
       end
 
       def fail?

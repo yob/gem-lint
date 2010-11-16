@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class CsvAuthorsStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Authors field in spec uses CSV to specify multiple authors instead of an array"
       end
 
-      def self.tag
+      def tag
         :"csv-authors"
-      end
-
-      def pass?
-        !fail?
       end
 
       def fail?

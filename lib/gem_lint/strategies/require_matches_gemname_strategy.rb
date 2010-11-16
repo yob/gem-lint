@@ -4,20 +4,16 @@ module GemLint
   module Strategies
     class RequireMatchesGemnameStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "Gem cannot be loaded by require 'gemname'"
       end
 
-      def self.tag
+      def tag
         :"require-doesnt-match-gemname"
       end
 
-      def pass?
-        spec.files.include?(preferred_filename)
-      end
-
       def fail?
-        !pass?
+        !spec.files.include?(preferred_filename)
       end
 
       private

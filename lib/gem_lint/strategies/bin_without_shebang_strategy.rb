@@ -2,16 +2,12 @@ module GemLint
   module Strategies
     class BinWithoutShebangStrategy < AbstractStrategy
 
-      def self.description
+      def description
         "A file in bin/ doesn't have a shebang on the first line"
       end
 
-      def self.tag
+      def tag
         :"bin-without-shebang"
-      end
-
-      def pass?
-        !self.fail?
       end
 
       def fail?

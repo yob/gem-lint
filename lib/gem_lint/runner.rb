@@ -29,10 +29,12 @@ module GemLint
     #
     def collect_tags
       if unpack_successful?
-        GemLint.strategies.select { |v|
-          v.new(visitor_args).fail?
-        }.map { |v|
-          v.tag
+        GemLint.strategies.map { |s|
+          s.new(visitor_args)
+        }.select { |s|
+          s.fail?
+        }.map { |s|
+          s.tag
         }
       else
         ["unpack-failed"]
