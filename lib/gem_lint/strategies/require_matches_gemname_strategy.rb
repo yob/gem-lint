@@ -12,6 +12,8 @@ module GemLint
         :"require-doesnt-match-gemname"
       end
 
+      # TODO: does thi need to be beefed up to recognise extensions
+      #
       def fail?
         !spec.files.include?(preferred_filename)
       end
