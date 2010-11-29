@@ -1,0 +1,72 @@
+--- !ruby/object:Gem::Specification 
+name: lint
+version: !ruby/object:Gem::Version 
+  hash: 29
+  prerelease: false
+  segments: 
+  - 0
+  - 0
+  - 1
+  version: 1.0.0
+platform: ruby
+authors: 
+- James Healy
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-11-15 00:00:00 -06:00
+default_executable: 
+dependencies: []
+
+description: A dummy unpacked gem for testing the behaviour of GemLint. Copy this directory when creating new specs.
+email: james@yob.id.au
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- lib/lint.rb
+- bin/lint.rb
+has_rdoc: true
+homepage: http://github.com/yob/gem-lint
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --title
+- Gem Lint
+- --line-numbers
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 31
+      segments: 
+      - 1
+      - 3
+      - 2
+      version: 1.3.2
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.7
+signing_key: 
+specification_version: 3
+summary: A dummy unpacked gem for testing the behaviour of GemLint.
+test_files: []
+
