@@ -11,7 +11,7 @@ module GemLint
       end
 
       def fail?
-        yaml.authors.is_a?(String) && yaml.author.match(/.+,.+/)
+        yaml.authors.is_a?(Array) && yaml.authors.first.match(/.+,.+/)
       end
 
       private
