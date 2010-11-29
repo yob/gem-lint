@@ -5,7 +5,7 @@ module GemLint
     class RequireMatchesGemnameStrategy < AbstractStrategy
 
       def description
-        "Gem cannot be loaded by require 'gemname'"
+        "Gem cannot be loaded by require '#{preferred_basename}'"
       end
 
       def tag
@@ -20,8 +20,12 @@ module GemLint
 
       private
 
+      def preferred_basename
+        "lib/" + spec.name.tr("-","/")
+      end
+
       def preferred_filename
-        "lib/" + spec.name.tr("-","/") + ".rb"
+        preferred_basename + ".rb"
       end
 
       def spec
