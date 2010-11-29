@@ -16,3 +16,10 @@ RSpec::Core::RakeTask.new("spec") do |t|
   # a large amount of noise to my console if I do
   #t.ruby_opts = "-w"
 end
+
+desc "Run all rspec files"
+RSpec::Core::RakeTask.new("rcov") do |t|
+  t.rspec_opts  = ["--color", "--format progress"]
+  t.rcov        = true
+  t.rcov_opts   = ["--exclude /var", "--exclude spec"]
+end
