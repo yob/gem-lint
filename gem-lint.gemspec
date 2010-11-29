@@ -10,4 +10,7 @@ Gem::Specification.new do |s|
   s.rdoc_options      << "--title" << "Gem Lint" << "--line-numbers"
   s.files             = Dir.glob("lib/**/*") + ["README.rdoc"]
   s.required_rubygems_version = ">=1.3.2"
+
+  s.add_development_dependency("rake")
+  s.add_development_dependency("rspec", "~>2.0")
 end
