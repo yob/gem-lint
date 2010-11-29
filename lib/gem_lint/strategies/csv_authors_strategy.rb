@@ -3,7 +3,7 @@ module GemLint
     class CsvAuthorsStrategy < AbstractStrategy
 
       def description
-        "Authors field in spec uses CSV to specify multiple authors instead of an array"
+        "Authors field in spec uses a comma or semicolon to specify multiple authors instead of an array"
       end
 
       def tag
@@ -11,7 +11,8 @@ module GemLint
       end
 
       def fail?
-        yaml.authors.is_a?(Array) && yaml.authors.first.match(/.+,.+/)
+        yaml.authors.is_a?(Array) &&
+          (yaml.authors.first.include?(",") || yaml.authors.first.include?(";"))
       end
 
       private
