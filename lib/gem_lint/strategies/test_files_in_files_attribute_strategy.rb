@@ -13,12 +13,16 @@ module GemLint
       end
 
       def fail?
-        yaml.files.any? { |filename|
+        orig_files.any? { |filename|
           filename[-8,8] == "_spec.rb" || filename[-8,8] == "_test.rb"
         }
       end
 
       private
+
+      def orig_files
+        @orig_files ||= yaml.files - yaml.test_files
+      end
 
       def yaml
         @yaml ||= YAML.load(File.read(@metadata_path))
