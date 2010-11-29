@@ -10,7 +10,7 @@ directories, encoding issues in the gemspec, etc.
 
 == Status
 
-This a spike. It has no tests and is a proof of concept. Most of it was written at
+This a spike. It has few tests and is a proof of concept. Most of it was written at
 a Railscamp and therefore is probably of suspect quality.
 
 == Compatability
@@ -19,8 +19,12 @@ Rubygems 1.3.2 or greater is required, otherwise it should run everywhere.
 
 == Developing
 
-To add new checks, create a new strategy in lib/gem_lint/strategies. Check
-other strategies for an idea of the required contract.
+To add new checks, create a new strategy in lib/gem_lint/strategies with a matching
+spec in spec/strategies.
+
+Check other strategies for an idea of the required contract. There are existing
+specs to check all strategies confirm to the contract, so ensure the full suit
+(using "rake") is green.
 
 == Ideas
 
