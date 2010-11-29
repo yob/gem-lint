@@ -1,0 +1,3 @@
+# coding: utf-8
+
+puts "dummy bin file, just for testing"
