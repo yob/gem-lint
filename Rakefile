@@ -4,6 +4,8 @@ Bundler.setup
 
 require 'rake'
 require 'rspec/core/rake_task'
+require 'roodi'
+require 'roodi_task'
 
 desc "Default Task"
 task :default => [ :spec ]
@@ -23,3 +25,5 @@ RSpec::Core::RakeTask.new("rcov") do |t|
   t.rcov        = true
   t.rcov_opts   = ["--exclude /var", "--exclude spec"]
 end
+
+RoodiTask.new 'roodi', ['lib/**/*.rb']
