@@ -3,7 +3,8 @@
 module GemLint
   class Runner
 
-    attr_reader :tags, :tags_with_level, :email, :name, :version
+    attr_reader :tags, :tags_with_desc, :tags_with_level
+    attr_reader :email, :name, :version
 
     def initialize(filename)
       raise ArgumentError, "'#{filename}' does not exist" unless File.file?(filename.to_s)
@@ -18,6 +19,7 @@ module GemLint
       unpack_gem
       @tags    = collect_tags
       @tags_with_level = collect_tags_with_level
+      @tags_with_desc  = collect_tags_with_desc
       @email   = spec ? spec.email : nil
       @name    = spec ? spec.name : nil
       @version = spec ? spec.version.to_s : nil
@@ -35,6 +37,18 @@ module GemLint
         }
       else
         ["unpack-failed"]
+      end
+    end
+
+    def collect_tags_with_desc
+      if unpack_successful?
+        failed_strategies.map { |s|
+          ["#{s.level_char}: #{s.tag}", s.description]
+        }.sort_by { |arr|
+          arr.first
+        }
+      else
+        ["E: unpack-failed", "There was an error unpacking the gem file"]
       end
     end
 

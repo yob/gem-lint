@@ -16,10 +16,39 @@ class Gem::Commands::LintCommand < Gem::Command
 
   def initialize
     super 'lint', description
+
+    add_option('-d', '--detailed', 'Display detailed output') do |value, opts|
+      options[:detailed] = true
+    end
   end
 
   def execute
     runner = GemLint::Runner.new(get_one_gem_name)
+
+    if options[:detailed]
+      detailed_output(runner)
+    else
+      short_output(runner)
+    end
+  end
+
+  private
+
+  def detailed_output(runner)
+    if runner.tags.empty?
+      puts "No test failures!"
+      puts
+    else
+      runner.tags_with_desc.each do |tag, desc|
+        puts "- #{tag}"
+        puts "  #{desc}"
+      end
+      puts
+      exit 1
+    end
+  end
+
+  def short_output(runner)
     if runner.tags.empty?
       puts "No test failures!"
       puts
