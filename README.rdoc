@@ -41,5 +41,4 @@ specs to check all strategies confirm to the contract, so ensure the full suit
 
 == Ideas
 
-* classify each check as warning/error
 * command for users to display extra info on a tag a gem failed
