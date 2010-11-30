@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name              = "gem-lint"
+  s.name              = "gem_lint"
   s.version           = "0.0.1"
   s.summary           = "Check rubygem files for common mistakes and errors"
   s.description       = "Adds a 'lint' command rubygems that will pront a list of possible errors in a gem"
