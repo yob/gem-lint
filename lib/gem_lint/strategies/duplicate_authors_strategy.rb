@@ -10,6 +10,10 @@ module GemLint
         :"duplicate-authors"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         yaml.authors.is_a?(Array) && yaml.authors.uniq.size != yaml.authors.size
       end

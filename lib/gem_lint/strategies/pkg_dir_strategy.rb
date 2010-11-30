@@ -10,6 +10,10 @@ module GemLint
         :"pkg-dir"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         root_files.any? { |filename|
           filename.match(/pkg.*/)

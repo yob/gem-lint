@@ -10,6 +10,10 @@ module GemLint
         :"utf8-metadata"
       end
 
+      def level
+        :error
+      end
+
       def fail?
         File.read(@metadata_path).unpack("U*")
         false

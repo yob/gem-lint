@@ -12,6 +12,10 @@ module GemLint
         :"ruby-files-outside-lib-test-spec"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         all_files.any? do |filename|
           filename[0,3] != "lib" && filename[0,4] != "spec" &&

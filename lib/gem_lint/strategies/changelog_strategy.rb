@@ -10,6 +10,10 @@ module GemLint
         :"no-changelog-or-history"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         root_files.none? do |filename|
           dfile = filename.downcase

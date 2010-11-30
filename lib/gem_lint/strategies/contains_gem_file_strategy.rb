@@ -10,6 +10,10 @@ module GemLint
         :"contains-gem-file"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         spec.files.any? { |filename|
           filename.match(/\A.*\.gem\Z/)

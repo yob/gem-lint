@@ -10,6 +10,10 @@ module GemLint
         :"csv-authors"
       end
 
+      def level
+        :error
+      end
+
       def fail?
         yaml.authors.is_a?(Array) &&
           (yaml.authors.first.include?(",") || yaml.authors.first.include?(";"))

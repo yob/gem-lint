@@ -10,6 +10,10 @@ module GemLint
         :"string-email"
       end
 
+      def level
+        :error
+      end
+
       def fail?
         yaml.email.is_a?(String)
       end

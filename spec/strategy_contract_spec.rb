@@ -21,6 +21,10 @@ GemLint.strategies.each do |klass|
       @obj.respond_to?(:fail?).should       be_true
     end
 
+    it "should respond to the level method" do
+      @obj.respond_to?(:level).should       be_true
+    end
+
     it "should not raise an exception in the description method" do
       lambda {
         @obj.description
@@ -39,12 +43,22 @@ GemLint.strategies.each do |klass|
       }.should_not raise_error
     end
 
+    it "should not raise an exception in the level method" do
+      lambda {
+        @obj.level
+      }.should_not raise_error
+    end
+
     it "should return a string from the decription method" do
       @obj.description.should be_a_kind_of(String)
     end
 
     it "should return a symbol from the tag method" do
       @obj.tag.should         be_a_kind_of(Symbol)
+    end
+
+    it "should return a valid symbol from the level method" do
+      [:error, :warning, :stat].include?(@obj.level).should be_true
     end
   end
 

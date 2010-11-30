@@ -23,6 +23,10 @@ module GemLint
         raise "this should be implemented by concrete subclasses"
       end
 
+      def level
+        raise "this should be implemented by concrete subclasses"
+      end
+
       def tag
         raise "this should be implemented by concrete subclasses"
       end

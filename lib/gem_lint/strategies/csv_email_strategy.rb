@@ -10,6 +10,10 @@ module GemLint
         :"csv-email"
       end
 
+      def level
+        :error
+      end
+
       def fail?
         (yaml.email.is_a?(String) && (yaml.email.include?(",") || yaml.email.include?(";"))) ||
           (yaml.email.is_a?(Array) && (yaml.email.first.include?(",") || yaml.email.first.include?(";")))

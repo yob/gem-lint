@@ -10,6 +10,10 @@ module GemLint
         :"csv-email"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         yaml.email.is_a?(Array) && yaml.email.uniq.size != yaml.email.size
       end

@@ -10,6 +10,10 @@ module GemLint
         :"bin-ends-with-rb"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         bin_files.any? { |path| path[-3,3] == ".rb" }
       end

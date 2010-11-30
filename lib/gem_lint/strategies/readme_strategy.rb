@@ -10,6 +10,10 @@ module GemLint
         :"no-readme"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         root_files.none? do |filename|
           filename.downcase.include?("readme")

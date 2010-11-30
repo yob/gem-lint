@@ -12,6 +12,10 @@ module GemLint
         :"capitals-in-name"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         spec.name.match(/[A-Z]/)
       end

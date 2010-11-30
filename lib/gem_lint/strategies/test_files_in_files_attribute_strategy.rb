@@ -12,6 +12,10 @@ module GemLint
         :"test-files-in-files-attribute"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         orig_files.any? { |filename|
           filename[-8,8] == "_spec.rb" || filename[-8,8] == "_test.rb"

@@ -10,6 +10,10 @@ module GemLint
         :"bin-without-shebang"
       end
 
+      def level
+        :warning
+      end
+
       def fail?
         bin_files.any? { |path|
           data = File.open(self.path + "/" + path) { |f| f.read }
