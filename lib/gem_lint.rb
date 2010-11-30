@@ -3,6 +3,7 @@
 # stdlib
 require 'tmpdir'
 require 'fileutils'
+require 'rubygems/format'
 
 # our own code
 require 'gem_lint/runner'

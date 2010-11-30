@@ -90,10 +90,6 @@ module GemLint
       @data_path ||= File.join(unpack_path, "data")
     end
 
-    def data_file
-      @data_file ||= File.join(unpack_path, "data.tar.gz")
-    end
-
     def metadata_gz_file
       @metadata_gz_file ||= File.join(unpack_path, "metadata.gz")
     end
@@ -114,16 +110,19 @@ module GemLint
       @unpack_path ||= File.join(Dir.tmpdir, rand(100000).to_s)
     end
 
-    # TODO: update this to use native ruby untar
     def unpack_gem
       Dir.mkdir(unpack_path)
       Dir.mkdir(data_path)
 
-      `tar -xkC #{unpack_path} -f #{@filename} > /dev/null 2>&1`
-      `tar -xzkC #{data_path} -f #{data_file} > /dev/null 2>&1`
-      `gunzip #{metadata_file} > /dev/null 2>&1`
-
-      FileUtils.remove_entry_secure(data_file) if File.file?(data_file)
+      format = Gem::Format.from_file_by_path(@filename)
+      File.open(metadata_file, "wb") { |out| YAML.dump(format.spec, out) }
+      format.file_entries.each do |entry, file_data|
+        path = entry['path']
+        path = File.expand_path File.join(data_path, path)
+        raise "Can't install files there" unless path[0, data_path.size] == data_path
+        FileUtils.mkdir_p File.dirname(path)
+        File.open(path, "wb") { |out| out.write file_data }
+      end
 
       true
     end
