@@ -20,13 +20,11 @@ class Gem::Commands::LintCommand < Gem::Command
 
   def execute
     runner = GemLint::Runner.new(get_one_gem_name)
-    tags = runner.tags
-    if tags.empty?
+    if runner.tags.empty?
       puts "No test failures!"
       puts
     else
-      puts "#{tags.size} failures"
-      tags.each do |tag|
+      runner.tags_with_level.each do |tag|
         puts "- #{tag}"
       end
       puts

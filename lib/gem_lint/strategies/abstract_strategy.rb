@@ -15,6 +15,10 @@ module GemLint
         raise ArgumentError, ":filename must be a filename ending in gem" unless @filename.to_s[-4,4] == ".gem"
       end
 
+      def level_char
+        self.level.to_s[0,1].upcase
+      end
+
       def description
         raise "this should be implemented by concrete subclasses"
       end
