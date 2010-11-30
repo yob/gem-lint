@@ -3,6 +3,11 @@
 Sanity check your rubygems for common issues. Missing readmes, bundled pkg
 directories, encoding issues in the gemspec, etc.
 
+Each test is classified as an error or warning. Errors are issues that (by my
+reading) violate the documented gem specs. Warnings are either best practices
+recommended by members of the community or arbitrary things that annoy me
+personally.
+
 == Usage
 
   gem install gem-lint
@@ -42,3 +47,8 @@ specs to check all strategies confirm to the contract, so ensure the full suit
 == Ideas
 
 * command for users to display extra info on a tag a gem failed
+
+== Further Reading
+
+* http://chneukirchen.github.com/rps/
+* http://blog.segment7.net/articles/2010/11/15/how-to-name-gems
