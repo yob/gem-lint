@@ -8,6 +8,18 @@ directories, encoding issues in the gemspec, etc.
   gem install gem-lint
   gem lint somefile-0.0.1.gem
 
+=== API
+
+To check a gem programmatically:
+
+  require "gem_lint"
+
+  runner = GemLint::Runner.new("widgets-1.0.gem")
+  puts runner.name
+  puts runner.version
+  puts runner.email
+  puts runner.tags
+
 == Status
 
 This a spike. It has few tests and is a proof of concept. Most of it was written at
@@ -15,7 +27,8 @@ a Railscamp and therefore is probably of suspect quality.
 
 == Compatability
 
-Rubygems 1.3.2 or greater is required, otherwise it should run everywhere.
+Rubygems 1.3.2 or greater is required, otherwise it's pure ruby should run on most
+ruby VMs.
 
 == Developing
 
