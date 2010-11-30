@@ -44,6 +44,8 @@ View other strategies for an idea of the required contract. There are existing
 specs to ensure all strategies confirm to the contract, so keep the full spec
 suit (using "rake") green.
 
+Full source is on github at https://github.com/yob/gem-lint
+
 == Ideas
 
 * command for users to display extra info on a tag a gem failed
