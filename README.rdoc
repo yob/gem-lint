@@ -40,9 +40,9 @@ ruby VMs.
 To add new checks, create a new strategy in lib/gem_lint/strategies with a matching
 spec in spec/strategies.
 
-Check other strategies for an idea of the required contract. There are existing
-specs to check all strategies confirm to the contract, so ensure the full suit
-(using "rake") is green.
+View other strategies for an idea of the required contract. There are existing
+specs to ensure all strategies confirm to the contract, so keep the full spec
+suit (using "rake") green.
 
 == Ideas
 
