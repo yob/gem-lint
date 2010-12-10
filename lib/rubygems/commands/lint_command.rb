@@ -28,7 +28,7 @@ class Gem::Commands::LintCommand < Gem::Command
     if options[:detailed]
       detailed_output(runner)
     else
-      short_output(runner)
+      simple_output(runner)
     end
   end
 
@@ -39,18 +39,18 @@ class Gem::Commands::LintCommand < Gem::Command
       puts "No test failures!"
       puts
     else
-      puts runner
+      puts runner.to_s(:detailed)
       puts
       exit 1
     end
   end
 
-  def short_output(runner)
+  def simple_output(runner)
     if runner.tags.empty?
       puts "No test failures!"
       puts
     else
-      puts runner
+      puts runner.to_s(:simple)
       puts
       exit 1
     end

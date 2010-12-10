@@ -13,8 +13,12 @@ module GemLint
       init_vars
     end
 
-    def to_s
-      lines.join("\n")
+    def to_s(type = :simple)
+      if type == :simple
+        @tags.map { |t| "- #{t}"}.join("\n")
+      else
+        lines.join("\n")
+      end
     end
 
     private
