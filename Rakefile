@@ -19,7 +19,7 @@ RSpec::Core::RakeTask.new("spec") do |t|
   #t.ruby_opts = "-w"
 end
 
-desc "Run all rspec files"
+desc "Run all rspec files with rcov"
 RSpec::Core::RakeTask.new("rcov") do |t|
   t.rspec_opts  = ["--color", "--format progress"]
   t.rcov        = true
