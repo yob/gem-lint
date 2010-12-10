@@ -17,9 +17,7 @@ if runner.tags.empty?
   puts
   exit 0
 else
-  runner.tags_with_level.each do |tag|
-    puts "- #{tag}"
-  end
+  puts runner
   puts
   exit 1
 end

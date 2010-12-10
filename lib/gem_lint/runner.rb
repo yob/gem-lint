@@ -13,17 +13,32 @@ module GemLint
       init_vars
     end
 
+    def to_s
+      lines.join("\n")
+    end
+
     private
 
     def init_vars
       unpack_gem
       @tags    = collect_tags
-      @tags_with_level = collect_tags_with_level
-      @tags_with_desc  = collect_tags_with_desc
       @email   = spec ? spec.email : nil
       @name    = spec ? spec.name : nil
       @version = spec ? spec.version.to_s : nil
+      lines
       cleanup
+    end
+
+    def lines
+      if unpack_successful?
+        @lines ||= failed_strategies.map { |s|
+          [s.level_char, self.name, self.version, s.tag, s.description].join(": ")
+        }.sort
+      else
+        @lines ||= [
+          ["E", self.name, self.version, "unpack-failed", "There was an error unpacking the gem file"].join(": ")
+        ]
+      end
     end
 
     # returns an array of symbols, each one indicating a test the provided gem
@@ -37,28 +52,6 @@ module GemLint
         }
       else
         ["unpack-failed"]
-      end
-    end
-
-    def collect_tags_with_desc
-      if unpack_successful?
-        failed_strategies.map { |s|
-          ["#{s.level_char}: #{s.tag}", s.description]
-        }.sort_by { |arr|
-          arr.first
-        }
-      else
-        ["E: unpack-failed", "There was an error unpacking the gem file"]
-      end
-    end
-
-    def collect_tags_with_level
-      if unpack_successful?
-        failed_strategies.map { |s|
-          "#{s.level_char}: #{s.tag}"
-        }.sort
-      else
-        ["E: unpack-failed"]
       end
     end
 

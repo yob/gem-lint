@@ -39,10 +39,7 @@ class Gem::Commands::LintCommand < Gem::Command
       puts "No test failures!"
       puts
     else
-      runner.tags_with_desc.each do |tag, desc|
-        puts "- #{tag}"
-        puts "  #{desc}"
-      end
+      puts runner
       puts
       exit 1
     end
@@ -53,9 +50,7 @@ class Gem::Commands::LintCommand < Gem::Command
       puts "No test failures!"
       puts
     else
-      runner.tags_with_level.each do |tag|
-        puts "- #{tag}"
-      end
+      puts runner
       puts
       exit 1
     end
