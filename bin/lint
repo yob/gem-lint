@@ -13,11 +13,9 @@ filename = ARGV.shift
 runner = GemLint::Runner.new(filename)
 
 if runner.tags.empty?
-  puts "No test failures!"
-  puts
   exit 0
 else
-  puts runner
+  puts runner.to_s(:detailed)
   puts
   exit 1
 end
