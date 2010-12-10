@@ -3,8 +3,8 @@
 module GemLint
   class Runner
 
-    attr_reader :tags, :tags_with_desc, :tags_with_level
-    attr_reader :email, :name, :version
+    attr_reader :tags
+    attr_reader :email, :name, :platform, :version
 
     def initialize(filename)
       raise ArgumentError, "'#{filename}' does not exist" unless File.file?(filename.to_s)
@@ -21,10 +21,11 @@ module GemLint
 
     def init_vars
       unpack_gem
-      @tags    = collect_tags
-      @email   = spec ? spec.email : nil
-      @name    = spec ? spec.name : nil
-      @version = spec ? spec.version.to_s : nil
+      @tags     = collect_tags
+      @email    = spec ? spec.email : nil
+      @name     = spec ? spec.name : nil
+      @version  = spec ? spec.version.to_s : nil
+      @platform = spec ? spec.platform.to_s : nil
       lines
       cleanup
     end
@@ -32,11 +33,11 @@ module GemLint
     def lines
       if unpack_successful?
         @lines ||= failed_strategies.map { |s|
-          [s.level_char, self.name, self.version, s.tag, s.description].join(": ")
+          [s.level_char, self.name, self.version, self.platform, s.tag, s.description].join(": ")
         }.sort
       else
         @lines ||= [
-          ["E", self.name, self.version, "unpack-failed", "There was an error unpacking the gem file"].join(": ")
+          ["E", self.name, self.version, self.platform, "unpack-failed", "There was an error unpacking the gem file"].join(": ")
         ]
       end
     end
