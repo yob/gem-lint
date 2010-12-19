@@ -121,12 +121,14 @@ module GemLint
       format.file_entries.each do |entry, file_data|
         path = entry['path']
         path = File.expand_path File.join(data_path, path)
-        raise "Can't install files there" unless path[0, data_path.size] == data_path
+        return false unless path[0, data_path.size] == data_path
         FileUtils.mkdir_p File.dirname(path)
         File.open(path, "wb") { |out| out.write file_data }
       end
 
       true
+    rescue
+      false
     end
 
     def cleanup
