@@ -1,5 +1,6 @@
 vXXX ()
 * change output format to be easily machine readable
+* ruby1.9 compat
 
 v0.0.3 (10th December 2010)
 * use pure ruby to unpack gems
