@@ -16,7 +16,7 @@ module GemLint
 
       def fail?
         (yaml.email.is_a?(String) && (yaml.email.include?(",") || yaml.email.include?(";"))) ||
-          (yaml.email.is_a?(Array) && (yaml.email.first.include?(",") || yaml.email.first.include?(";")))
+          (yaml.email.is_a?(Array) && (yaml.email.first.to_s.include?(",") || yaml.email.first.to_s.include?(";")))
       end
 
       private

@@ -18,4 +18,9 @@ describe GemLint::Strategies::CsvEmailStrategy do
     args = strategy_args("array_emails")
     GemLint::Strategies::CsvEmailStrategy.new(args).fail?.should be_false
   end
+
+  it "correctly pass gems that have an empty email array" do
+    args = strategy_args("empty_emails")
+    GemLint::Strategies::CsvEmailStrategy.new(args).fail?.should be_false
+  end
 end
