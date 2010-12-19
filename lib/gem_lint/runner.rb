@@ -81,7 +81,7 @@ module GemLint
     end
 
     def unpack_successful?
-      File.directory?(data_path) && File.file?(metadata_file)
+      File.directory?(data_path) && File.file?(metadata_file) && File.size(metadata_file) > 0
     end
 
     def data_path
