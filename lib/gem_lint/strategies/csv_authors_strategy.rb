@@ -16,7 +16,7 @@ module GemLint
 
       def fail?
         yaml.authors.is_a?(Array) &&
-          (yaml.authors.first.include?(",") || yaml.authors.first.include?(";"))
+          (yaml.authors.first.to_s.include?(",") || yaml.authors.first.to_s.include?(";"))
       end
 
       private

@@ -13,4 +13,9 @@ describe GemLint::Strategies::CsvAuthorsStrategy do
     args = strategy_args("array_authors")
     GemLint::Strategies::CsvAuthorsStrategy.new(args).fail?.should be_false
   end
+
+  it "correctly pass gems that have an empty authors arrayy" do
+    args = strategy_args("empty_authors")
+    GemLint::Strategies::CsvAuthorsStrategy.new(args).fail?.should be_false
+  end
 end
