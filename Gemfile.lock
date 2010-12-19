@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gem-lint (0.0.1)
+    gem_lint (0.0.4)
 
 GEM
   remote: http://rubygems.org/
@@ -11,14 +11,14 @@ GEM
     rcov (0.9.9)
     roodi (2.1.0)
       ruby_parser
-    rspec (2.2.0)
-      rspec-core (~> 2.2)
-      rspec-expectations (~> 2.2)
-      rspec-mocks (~> 2.2)
-    rspec-core (2.2.0)
-    rspec-expectations (2.2.0)
+    rspec (2.3.0)
+      rspec-core (~> 2.3.0)
+      rspec-expectations (~> 2.3.0)
+      rspec-mocks (~> 2.3.0)
+    rspec-core (2.3.1)
+    rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.2.0)
+    rspec-mocks (2.3.0)
     ruby_parser (2.0.5)
       sexp_processor (~> 3.0)
     sexp_processor (3.0.5)
@@ -27,7 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gem-lint!
+  gem_lint!
   rake
   rcov
   roodi
