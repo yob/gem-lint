@@ -105,6 +105,7 @@ module GemLint
     end
 
     def unpack_path
+      return @unpack_path if @unpack_path
       while @unpack_path.nil? || File.directory?(@unpack_path)
         @unpack_path = File.join(Dir.tmpdir, rand(100000).to_s)
       end
