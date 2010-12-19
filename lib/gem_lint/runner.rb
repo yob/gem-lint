@@ -105,11 +105,14 @@ module GemLint
     end
 
     def unpack_path
-      @unpack_path ||= File.join(Dir.tmpdir, rand(100000).to_s)
+      while @unpack_path.nil? || File.directory?(@unpack_path)
+        @unpack_path = File.join(Dir.tmpdir, rand(100000).to_s)
+      end
+      Dir.mkdir(@unpack_path)
+      @unpack_path
     end
 
     def unpack_gem
-      Dir.mkdir(unpack_path)
       Dir.mkdir(data_path)
 
       format = Gem::Format.from_file_by_path(@filename)
