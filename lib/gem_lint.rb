@@ -18,7 +18,7 @@ module GemLint
   #
   def self.strategies
     GemLint::Strategies.constants.sort.select { |class_name|
-      class_name != "AbstractStrategy"
+      class_name.to_s != "AbstractStrategy"
     }.map { |class_name|
       GemLint::Strategies.const_get(class_name)
     }
