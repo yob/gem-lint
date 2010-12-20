@@ -1,6 +1,6 @@
-vXXX ()
-* change output format to be easily machine readable
-* ruby1.9 compat
+v0.0.4 (21st December 2010)
+* change output format to be easily machine parsable
+* ruby 1.9.2 compat
 * various new checks
 
 v0.0.3 (10th December 2010)
