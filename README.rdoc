@@ -47,6 +47,12 @@ suit (using "rake") green.
 
 Full source is on github at https://github.com/yob/gem-lint
 
+== Ideas for new checks
+
+* look for gems containing DLLs with platform ruby
+* runtime dependencies on hoe? jeweler?
+* improved handling of compiled extensions
+
 == Further Reading
 
 * http://chneukirchen.github.com/rps/
