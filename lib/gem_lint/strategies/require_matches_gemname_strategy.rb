@@ -5,7 +5,7 @@ module GemLint
     class RequireMatchesGemnameStrategy < AbstractStrategy
 
       def description
-        "Gem cannot be loaded by require '#{preferred_basename}'"
+        "Gem cannot be loaded by require '#{preferred_basename.gsub(/^lib\//,'')}'"
       end
 
       def tag
