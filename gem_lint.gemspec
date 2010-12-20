@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">=1.3.2"
 
   s.add_development_dependency("rake")
-  s.add_development_dependency("rcov")
   s.add_development_dependency("roodi")
   s.add_development_dependency("rspec", "~>2.0")
 end

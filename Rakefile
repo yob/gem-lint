@@ -19,11 +19,4 @@ RSpec::Core::RakeTask.new("spec") do |t|
   #t.ruby_opts = "-w"
 end
 
-desc "Run all rspec files with rcov"
-RSpec::Core::RakeTask.new("rcov") do |t|
-  t.rspec_opts  = ["--color", "--format progress"]
-  t.rcov        = true
-  t.rcov_opts   = ["--exclude /var", "--exclude spec"]
-end
-
 RoodiTask.new 'roodi', ['lib/**/*.rb']
