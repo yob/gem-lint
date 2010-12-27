@@ -52,6 +52,8 @@ Full source is on github at https://github.com/yob/gem-lint
 * look for gems containing DLLs with platform ruby
 * runtime dependencies on hoe? jeweler?
 * improved handling of compiled extensions
+* gems with license files but no license specified in the spec
+* files entry in spec not matching actual files in data
 
 == Further Reading
 
