@@ -49,7 +49,6 @@ Full source is on github at https://github.com/yob/gem-lint
 
 == Ideas for new checks
 
-* look for gems containing DLLs with platform ruby
 * improved handling of compiled extensions
 * files entry in spec not matching actual files in data
 
