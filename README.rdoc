@@ -51,6 +51,7 @@ Full source is on github at https://github.com/yob/gem-lint
 
 * improved handling of compiled extensions
 * files entry in spec not matching actual files in data
+* contains compiled .o files for wrong arch (check glib2 0.90.6 for example)
 
 == Further Reading
 
