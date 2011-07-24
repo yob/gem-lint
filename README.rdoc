@@ -10,7 +10,7 @@ personally.
 
 == Usage
 
-  gem install gem-lint
+  gem install gem_lint
   gem lint somefile-0.0.1.gem
   gem lint somefile-0.0.1.gem --detailed
 
